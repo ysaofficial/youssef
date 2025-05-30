@@ -3,178 +3,390 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Youssef Amer — Global Web Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <title>Youssef | Global Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
+    :root {
+      --bg-light: #fdf6e3;
+      --text-light: #333;
+      --accent-light: #6b4c3b;
+      --light-accent-light: #c9b79c;
+      --highlight-light: #fff6e0;
+
+      --bg-dark: #1e1e1e;
+      --text-dark: #ddd;
+      --accent-dark: #d9a95c;
+      --light-accent-dark: #d6b868;
+      --highlight-dark: #3a3a3a;
+
+      --transition-speed: 0.4s;
     }
-    body {
+
+    /* Reset */
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #121212;
-      color: #e0e0e0;
-      line-height: 1.6;
+      padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
-    a {
-      color: #ff6f61;
-      text-decoration: none;
-      transition: color 0.3s ease;
+
+    body {
+      font-family: 'Merriweather', serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.7;
+      transition: background var(--transition-speed), color var(--transition-speed);
     }
-    a:hover {
-      color: #ff9a87;
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
     }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: #1f1f1f;
-      padding: 1rem 2rem;
+      background: var(--accent-light);
+      color: #fff;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      justify-content: space-between;
     }
+
+    body.dark header {
+      background: var(--accent-dark);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
     .logo {
+      font-size: 2.2rem;
       font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 1.2px;
-      color: #ff6f61;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    nav li {
-      font-weight: 500;
-    }
-    main {
-      padding-top: 80px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-    section {
-      padding: 4rem 0;
-      border-bottom: 1px solid #333;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s forwards;
-    }
-    section:nth-child(odd) {
-      background: #181818;
-    }
-    section:nth-child(even) {
-      background: #222;
-    }
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    h1, h2 {
-      color: #ff6f61;
-      margin-bottom: 0.8rem;
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-top: 0;
-    }
-    h2 {
-      font-size: 2rem;
-    }
-    p {
-      font-size: 1.125rem;
-      max-width: 600px;
-      color: #ccc;
-    }
-    .btn-primary {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: #ff6f61;
-      border-radius: 30px;
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 1rem;
+      letter-spacing: 1px;
+      cursor: default;
       user-select: none;
     }
-    .btn-primary:hover {
-      background: #ff4b3e;
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
     }
-    /* Skills Grid */
+
+    nav a {
+      color: #fefefe;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--highlight-light);
+    }
+
+    body.dark nav a:hover,
+    body.dark nav a:focus-visible {
+      color: var(--highlight-dark);
+    }
+
+    .dark-mode-toggle {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode-toggle:hover,
+    .dark-mode-toggle:focus {
+      background: #fff;
+      color: var(--accent-light);
+    }
+
+    body.dark .dark-mode-toggle:hover,
+    body.dark .dark-mode-toggle:focus {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .hero {
+      background: var(--light-accent-light);
+      padding: 6rem 1rem 5rem;
+      text-align: center;
+      color: var(--accent-light);
+      background-image: linear-gradient(135deg, var(--light-accent-light), var(--bg-light));
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .hero.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    body.dark .hero {
+      background-image: linear-gradient(135deg, var(--light-accent-dark), var(--bg-dark));
+      color: var(--accent-dark);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background: var(--accent-light);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: #523629;
+      transform: scale(1.07);
+    }
+
+    body.dark .btn {
+      background: var(--accent-dark);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    body.dark .btn:hover,
+    body.dark .btn:focus-visible {
+      background: #a57e3a;
+      transform: scale(1.07);
+    }
+
+    section {
+      padding: 5rem 1rem 6rem;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--accent-light);
+      font-weight: 700;
+      font-size: 2.5rem;
+      user-select: none;
+    }
+
+    body.dark section h2 {
+      color: var(--accent-dark);
+    }
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.5rem;
     }
-    .skill {
-      background: #333;
-      padding: 1rem;
+
+    .skills-grid div {
+      background: #fff;
+      padding: 1.5rem;
       border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       text-align: center;
       font-weight: 600;
-      box-shadow: 0 3px 8px rgba(255, 111, 97, 0.3);
-      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+      color: var(--accent-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      cursor: default;
     }
-    .skill:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(255, 111, 97, 0.6);
+
+    .skills-grid div:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
-    /* Projects */
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+
+    body.dark .skills-grid div {
+      background: #333;
+      color: var(--accent-dark);
+      box-shadow: 0 8px 20px rgba(217, 169, 92, 0.5);
     }
+
+    body.dark .skills-grid div:hover {
+      box-shadow: 0 12px 35px rgba(217, 169, 92, 0.8);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 2rem;
+    }
+
     .project-card {
-      background: #292929;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(255, 111, 97, 0.3);
-      width: 260px;
-      padding: 1.5rem;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      cursor: pointer;
-      color: #ff6f61;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding: 2rem 1.5rem;
       font-weight: 600;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 160px;
+      color: var(--accent-light);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
     .project-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 12px 30px rgba(255, 111, 97, 0.6);
+      transform: translateY(-10px);
+      box-shadow: 0 14px 45px rgba(0,0,0,0.2);
     }
+
+    body.dark .project-card {
+      background: #222;
+      color: var(--accent-dark);
+      box-shadow: 0 8px 30px rgba(217, 169, 92, 0.5);
+    }
+
+    body.dark .project-card:hover {
+      box-shadow: 0 16px 50px rgba(217, 169, 92, 0.9);
+    }
+
+    /* Social links */
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      user-select: none;
+    }
+
+    .social-links a {
+      color: var(--accent-light);
+      font-size: 2.4rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .social-links a:hover,
+    .social-links a:focus-visible {
+      transform: scale(1.3);
+      color: #523629;
+      outline: none;
+    }
+
+    body.dark .social-links a {
+      color: var(--accent-dark);
+    }
+
+    body.dark .social-links a:hover,
+    body.dark .social-links a:focus-visible {
+      color: #a57e3a;
+    }
+
     /* Footer */
     footer {
+      background: var(--accent-light);
+      color: #fff;
       text-align: center;
-      padding: 2rem 1rem;
-      background: #1f1f1f;
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 3rem;
+      padding: 2.5rem 1rem;
+      user-select: none;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      transition: background var(--transition-speed);
     }
-    /* Responsive Nav */
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 1rem;
-      }
+
+    body.dark footer {
+      background: var(--accent-dark);
+    }
+
+    /* Accessibility */
+    a:focus-visible {
+      outline: 2px solid var(--accent-light);
+      outline-offset: 3px;
+    }
+
+    body.dark a:focus-visible {
+      outline: 2px solid var(--accent-dark);
+      outline-offset: 3px;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const darkModeToggle = document.querySelector('.dark-mode-toggle');
+      const body = document.body;
+
+      // Load saved theme
+      if(localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark');
+      }
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        if(body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.removeItem('theme');
+        }
+      });
+
+      // Scroll reveal effect
+      const sections = document.querySelectorAll('section, .hero');
+      const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if(sectionTop < triggerBottom) {
+            section.classList.add('visible');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+    });
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <div class="logo">Youssef Amer</div>
+    <div class="logo">Youssef</div>
     <nav>
       <ul>
         <li><a href="#about" tabindex="1">About</a></li>
@@ -183,98 +395,65 @@
         <li><a href="#contact" tabindex="4">Contact</a></li>
       </ul>
     </nav>
+    <button class="dark-mode-toggle" aria-label="Toggle Dark Mode" tabindex="5">Dark Mode</button>
   </header>
 
-  <main>
-    <section id="about" style="animation-delay: 0.2s;">
-      <h1>Hello, I'm Youssef Amer</h1>
-      <p>I’m a passionate web developer with a global mindset, combining modern technologies and clean design to build responsive and engaging digital experiences worldwide.</p>
-      <a href="#contact" class="btn-primary" tabindex="5">Work With Me</a>
-    </section>
+  <section class="hero" aria-label="Introduction">
+    <h2>Hello, I'm Youssef</h2>
+    <p>A professional Social Media Manager & Video Editor with global vision.</p>
+    <a href="#contact" class="btn" tabindex="6">Get in Touch</a>
+  </section>
 
-    <section id="skills" style="animation-delay: 0.4s;">
-      <h2>My Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">HTML5 & CSS3</div>
-        <div class="skill">JavaScript & ES6+</div>
-        <div class="skill">React & Next.js</div>
-        <div class="skill">Responsive Design</div>
-        <div class="skill">UI/UX Principles</div>
-        <div class="skill">Git & GitHub</div>
-        <div class="skill">SEO & Performance</div>
-        <div class="skill">Cross-browser Compatibility</div>
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title">About Me</h2>
+    <p style="max-width:700px; margin:auto; font-size:1.2rem; font-weight:300; user-select:none;">
+      Skilled in social media management, video editing, and Arabic-English translation. Dedicated to creating impactful content and driving growth.
+    </p>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title">
+    <h2 id="skills-title">Skills</h2>
+    <div class="skills-grid" role="list">
+      <div role="listitem" tabindex="0">Social Media Management</div>
+      <div role="listitem" tabindex="0">Video Editing (CapCut, Photoshop)</div>
+      <div role="listitem" tabindex="0">Arabic-English Translation</div>
+      <div role="listitem" tabindex="0">Content Strategy</div>
+      <div role="listitem" tabindex="0">Logo Design</div>
+      <div role="listitem" tabindex="0">TikTok Growth</div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-title">
+    <h2 id="projects-title">Projects</h2>
+    <div class="projects-grid" role="list">
+      <div class="project-card" role="listitem" tabindex="0">
+        <h3>Social Media Campaign for Brand X</h3>
+        <p>Boosted engagement by 40% through targeted video content and strategy.</p>
       </div>
-    </section>
-
-    <section id="projects" style="animation-delay: 0.6s;">
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="project-card" tabindex="6">Elegant Portfolio Website</div>
-        <div class="project-card" tabindex="7">Business Landing Page</div>
-        <div class="project-card" tabindex="8">E-commerce Platform UI</div>
-        <div class="project-card" tabindex="9">Interactive Resume</div>
-        <div class="project-card" tabindex="10">Personal Blog Design</div>
-        <div class="project-card" tabindex="11">Mobile App Interface</div>
+      <div class="project-card" role="listitem" tabindex="0">
+        <h3>Video Editing Series</h3>
+        <p>Produced over 50 high-quality videos optimizing viewer retention.</p>
       </div>
-    </section>
+      <div class="project-card" role="listitem" tabindex="0">
+        <h3>Arabic-English Translation Service</h3>
+        <p>Translated multiple marketing materials to reach diverse audiences.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" style="animation-delay: 0.8s;">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:youssef@example.com" tabindex="12">youssef@example.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/youssefamer" target="_blank" rel="noopener" tabindex="13">linkedin.com/in/youssefamer</a></p>
-      <p>GitHub: <a href="https://github.com/ysaofficial" target="_blank" rel="noopener" tabindex="14">github.com/ysaofficial</a></p>
-      <a href="Youssef_CV.pdf" download class="btn-primary" tabindex="15">Download My CV</a>
-    </section>
-  </main>
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact Me</h2>
+    <p style="text-align:center; font-size:1.2rem;">Connect with me on social media or send an email.</p>
+    <div class="social-links" role="list">
+      <a href="https://instagram.com/yousef_amer_official" target="_blank" aria-label="Instagram" role="listitem" tabindex="0"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@yousef_amer_official" target="_blank" aria-label="TikTok" role="listitem" tabindex="0"><i class="fab fa-tiktok"></i></a>
+      <a href="https://youtube.com/YsaQuran" target="_blank" aria-label="YouTube" role="listitem" tabindex="0"><i class="fab fa-youtube"></i></a>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 Youssef Amer — Global Developer Portfolio
+    © 2025 Youssef. All rights reserved.
   </footer>
-  <section id="contact" style="animation-delay: 0.8s;">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:yosefsamy123414@gmail.com" tabindex="12">yosefsamy123414@gmail.com</a></p>
- <section id="contact" style="animation-delay: 0.8s;">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="yosefsamy123414@gmail.com" tabindex="12">yosefsamy123414@gmail.com</a></p>
-
-  <div class="social-links" style="
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-  ">
-    <a href="https://instagram.com/yousef_amer_official" target="_blank" rel="noopener" aria-label="Instagram" tabindex="13" style="color: #E1306C; transition: transform 0.3s ease;">
-      <!-- Instagram SVG -->
-      <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" >
-        <path d="M7.75 2C4.9 2 2.75 4.15 2.75 7v10c0 2.85 2.15 5 5 5h8.5c2.85 0 5-2.15 5-5V7c0-2.85-2.15-5-5-5h-8.5zM12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm5.75-.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-      </svg>
-    </a>
-    <a href="https://tiktok.com/@yousef_amer_official" target="_blank" rel="noopener" aria-label="TikTok" tabindex="14" style="color: #000000; transition: transform 0.3s ease;">
-      <!-- TikTok SVG -->
-      <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" >
-        <path d="M17.5 2a5.5 5.5 0 0 0 2.184 4.238v6.37a5.5 5.5 0 1 1-6.684-5.06V2h2.5z"/>
-      </svg>
-    </a>
-    <a href="https://youtube.com/channel/YsaQuran" target="_blank" rel="noopener" aria-label="YouTube" tabindex="15" style="color: #FF0000; transition: transform 0.3s ease;">
-      <!-- YouTube SVG -->
-      <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" >
-        <path d="M10 15l5.19-3L10 9v6zm10-3c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-1z"/>
-      </svg>
-    </a>
-  </div>
-
-  <a href="Youssef_CV.pdf" download class="btn" tabindex="16" style="margin-top: 2rem; display: inline-block;">Download My CV</a>
-</section>
-
-<style>
-  /* Hover effect for social icons */
-  .social-links a:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-  }
-</style>
-
-
 </body>
 </html>
+
